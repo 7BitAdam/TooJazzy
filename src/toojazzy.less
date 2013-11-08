@@ -1,53 +1,58 @@
 .snazzyBlock(@num:1) {
-		width:100%*(((@single * @num) - @gutter) / @innercontainer);
+	width:100%*(((@single * @num) - @gutter) / @innercontainer);
 }
 
 body {
 	// Built with 1160 as the inner container
 
 	@innercontainer: 1160px;
+
 	@gutter: 30px;
 	@single: (@innercontainer / 12 );
 
-	// @Todo: Needs backup for ie8 and non flex box sites
-	// @TODO: Offset of boxes
-	// @TODO: Add .too class that handles responsive fullbackground images. 
-	// @TODO: Media query. not on widyh, check css queries updates. 
-	// @example: 
 	/**
-		@media (max-width: 480px) {
-		    .pure-g-r > .pure-u,
-		    .pure-g-r > [class *= "pure-u-"] {
-		        width: 100%;
-		    }
-		}
-	**/
-	// @TODO: Standard Call to Actions - ShaftBox
-
+	* Grid Row - Sets the flex box grid row container. All items contained
+	* within this div will then be controlled by the flex box functions laid out here. 
+	*/
 	.too {
 		position: relative;
 		display:flex;
 		flex-direction:row;
 		flex-wrap:nowrap;
-		flex-flow:ltr;
+		flex-flow:row;
 		width:100%;
-		justify-content:flex-start;
+		justify-content:space-around;
 
+		/**
+		* Change how the content is justified. 
+		*/
 		&.spaced {
 			justify-content:space-between;
 		}
 		&.centersavvy {
 			justify-content:center;
 		}
+		
+		/**
+		*	Allows you to have inner as a sub element or linked to the 
+		*	flexbox row
+		**/
+	}
+	.too.inner,
+	.inner {
+		/**
+		Make position relative, just in case someone decides to be absolutely non jazzy
+		and place an item absolutely. E.g. a logo.
+		*/
+		position: relative;
+		max-width:82.8571428571em;
+		width:100%;
+		margin:0 auto;
 
-		.inner {
-			/**
-			Make position relative, just in case someone decides to be absolutely non jazzy
-			and place an item absolutely. E.g. a logo.
-			*/
-			position: relative;
-			width:@innercontainer;
-			margin:0 auto;
+		/* Future version of the clearfix */
+		&:after {
+			display:block;
+			content:'';
 		}
 	}
 
@@ -58,13 +63,18 @@ body {
 		.snazzyBlock(4);
 
 		&.gutter {
-			margin:0 0 2.58620689655% 0;
+			margin:0 2.58620689655% 0 0;
 		}
 	}
 	.jazzy5 { .snazzyBlock(5); }
 	.jazzy6 { .snazzyBlock(6); }
 	.jazzy7 { .snazzyBlock(7); }
-	.jazzy8 { .snazzyBlock(8); }
+	.jazzy8 { 
+		.snazzyBlock(8); 
+		&.gutter {
+			margin:0 2.58620689655% 0 0;
+		}
+	}
 	.jazzy9 { .snazzyBlock(9); }
 	.jazzy10 { .snazzyBlock(10); }
 	.jazzy11 { .snazzyBlock(11); }
@@ -82,11 +92,18 @@ body {
 	.jazzy10,
 	.jazzy11,
 	.jazzy12 {
+		display: block;
 		float:left;
+
+		a > img {
+			width:100%;
+			height:auto;
+		}
+
+
 		&:last-child {
 			float:right;
-			margin:0;
-		}
+		} 
 	}
 
 	.width-image {
@@ -105,6 +122,21 @@ body {
 			background-repeat: no-repeat;
 		}
 	}
+	/**
+	* If you want a sales section on your site, be it with a text to the left and icon to the right, 
+	* then you will need a milken section
+	*
+	* http://en.wikipedia.org/wiki/Michael_Milken
+	*
+	**/
+
+	.milken {
+		padding:5% 0 5% 0;
+
+		h2 {
+			font-size: (( 24 / 14 ) * 100)em;
+		}
+	}
 
 
 
@@ -116,3 +148,12 @@ body {
 	// grody - really really gross
 	// phat
 }
+
+
+
+// Responsive
+
+
+
+
+
