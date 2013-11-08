@@ -1,3 +1,7 @@
+.snazzyBlock(@num:1) {
+		width:100%*(((@single * @num) - @gutter) / @innercontainer);
+}
+
 body {
 	// Built with 1160 as the inner container
 
@@ -9,13 +13,19 @@ body {
 	// @TODO: Offset of boxes
 	// @TODO: Add .too class that handles responsive fullbackground images. 
 	// @TODO: Media query. not on widyh, check css queries updates. 
-
-
-	.snazzyBlock(@num:1) {
-		width:100%*(((@single * @num) - @gutter) / @innercontainer);
-	}	
+	// @example: 
+	/**
+		@media (max-width: 480px) {
+		    .pure-g-r > .pure-u,
+		    .pure-g-r > [class *= "pure-u-"] {
+		        width: 100%;
+		    }
+		}
+	**/
+	// @TODO: Standard Call to Actions - ShaftBox
 
 	.too {
+		position: relative;
 		display:flex;
 		flex-direction:row;
 		flex-wrap:nowrap;
@@ -31,6 +41,11 @@ body {
 		}
 
 		.inner {
+			/**
+			Make position relative, just in case someone decides to be absolutely non jazzy
+			and place an item absolutely. E.g. a logo.
+			*/
+			position: relative;
 			width:@innercontainer;
 			margin:0 auto;
 		}
@@ -73,6 +88,25 @@ body {
 			margin:0;
 		}
 	}
+
+	.width-image {
+		/**
+		* Look directly for the next span down
+		**/
+		& > span {
+			width:100%;
+			display: inline-block;
+			vertical-align: middle;
+			font: 0/0 serif;
+			text-shadow:none;
+			color:transparent;
+			background-size: 100%;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+		}
+	}
+
+
 
 	// Offsets
 
