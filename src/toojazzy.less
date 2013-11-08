@@ -1,0 +1,78 @@
+body {
+	// Built with 1160 as the inner container
+
+	@innercontainer: 1160px;
+	@gutter: 30px;
+	@single: (@innercontainer / 12 );
+
+
+	.snazzyBlock(@num:1) {
+		width:100%*(((@single * @num) - @gutter) / @innercontainer);
+	}	
+
+	.too {
+		display:flex;
+		flex-direction:row;
+		flex-wrap:nowrap;
+		flex-flow:ltr;
+		width:100%;
+		justify-content:flex-start;
+		&.spaced {
+			justify-content:space-between;
+		}
+		&.centersavvy {
+			justify-content:center;
+		}
+
+		.inner {
+			width:@innercontainer;
+			margin:0 auto;
+		}
+	}
+
+	.jazzy1 { .snazzyBlock(1); }
+	.jazzy2 { .snazzyBlock(2); }
+	.jazzy3 { .snazzyBlock(3); }
+	.jazzy4 { 
+		.snazzyBlock(4);
+
+		&.gutter {
+			margin:0 0 2.58620689655% 0;
+		}
+	}
+	.jazzy5 { .snazzyBlock(5); }
+	.jazzy6 { .snazzyBlock(6); }
+	.jazzy7 { .snazzyBlock(7); }
+	.jazzy8 { .snazzyBlock(8); }
+	.jazzy9 { .snazzyBlock(9); }
+	.jazzy10 { .snazzyBlock(10); }
+	.jazzy11 { .snazzyBlock(11); }
+	.jazzy12 { .snazzyBlock(12); }
+
+	.jazzy1,
+	.jazzy2,
+	.jazzy3,
+	.jazzy4,
+	.jazzy5,
+	.jazzy6,
+	.jazzy7,
+	.jazzy8,
+	.jazzy9,
+	.jazzy10,
+	.jazzy11,
+	.jazzy12 {
+		float:left;
+		&:last-child {
+			float:right;
+			margin:0;
+		}
+	}
+
+	// Offsets
+
+
+	// Dink stlye - two incomes with no kids. 
+	// fresh - cool cool. 
+	// grody - really really gross
+	// phat
+}
